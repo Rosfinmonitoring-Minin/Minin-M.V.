@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Росфинмониторинг — Официальный внутренний портал</title>
+    <style>
+        :root {
+            --dark-blue: #0a1e38;
+            --main-blue: #004682;
+            --accent-gold: #c5a059;
+            --bg-gray: #f4f7fa;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            /* Переменные для твоего первого сайта (Портфолио) */
+            --portfolio-bg: #0f172a;
+            --neon-blue: #38bdf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* 1. ШАПКА И МЕНЮ */
+        .top-menu {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .menu-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-right {
+            display: flex;
+            gap: 25px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .menu-right a {
+            color: #cbd5e1;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .menu-right a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* 2. ГЛАВНЫЙ БАННЕР ВЕДОМСТВА */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--main-blue) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            border: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 13px;
+            text-transform: uppercase;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        /* 3. ОСНОВНОЙ КОНТЕНТ (ИНФОРМАЦИЯ И НОВОСТИ) */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Двухколоночный блок: Новости + Показатели */
+        .portal-info-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--main-blue);
+        }
+
+        .info-card h2 {
+            font-size: 18px;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Новости */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .news-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-date {
+            font-size: 11px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .news-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Показатели */
+        .metrics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .metric-box {
+            background: var(--bg-gray);
+            border-radius: 12px;
+            padding: 15px 20px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .metric-num {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--main-blue);
+        }
+
+        .metric-txt {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* ПРЕВЬЮ НАПРАВЛЕНИЙ */
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .preview-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .preview-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .preview-card h3 {
+            font-size: 15px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .preview-card p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+
+        /* 4. РАЗДЕЛ ПРОВЕРКИ СОТРУДНИКА (В САМОМ КОНЦЕ) */
+        .verification-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid #e2e8f0;
+            border-top: 6px solid var(--dark-blue);
+        }
+
+        .verify-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .verify-header h2 {
+            font-size: 22px;
+            color: var(--dark-blue);
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--main-blue);
+        }
+
+        .btn-verify {
+            background: var(--dark-blue);
+            color: white;
+            border: none;
+            padding: 0 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-verify:hover {
+            background: var(--main-blue);
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+
+        /* 5. ИНТЕГРАЦИЯ ТВОЕГО ПЕРВОГО САЙТА (Стиль личного портфолио) */
+        .portfolio-display-container {
+            margin-top: 40px;
+            background-color: var(--portfolio-bg);
+            border-radius: 16px;
+            padding: 40px;
+            color: #f8fafc;
+            display: none; /* Скрыто, пока не введут верный номер */
+            animation: slideUp 0.5s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Сетка личного портфолио */
+        .portfolio-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        /* Левая часть: 3D Карточка (Интерактивная фича из 1-го сайта) */
+        .card-container {
+            width: 100%;
+            height: 380px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card-container:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .card-front {
+            background: #1e293b;
+        }
+
+        .card-front img {
+            width: 130px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--neon-blue);
+            margin-bottom: 15px;
+        }
+
+        .card-front h3 { color: white; font-size: 18px; }
+        .card-front .rank { color: var(--neon-blue); font-size: 13px; font-weight: 700; margin-top: 5px; }
+
+        .card-back {
+            background: #0f172a;
+            transform: rotateY(180deg);
+            box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.1);
+        }
+
+        .card-back p { font-size: 13px; margin-bottom: 10px; color: #94a3b8; }
+
+        /* Правая часть: Вкладки, Скиллы, Описание */
+        .portfolio-details h2 {
+            font-size: 26px;
+            color: white;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-bio {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Прогресс-бары из первого сайта */
+        .skills-section h4 {
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .skill-bar-wrapper {
+            margin-bottom: 15px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .bar-bg {
+            background: #334155;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            background: linear-gradient(90deg, #0284c7, var(--neon-blue));
+            height: 100%;
+            width: 0%; /* Анимируется через JS */
+            transition: width 1s ease-in-out;
+        }
+
+        /* ПОДВАЛ ПОРТАЛА */
+        footer {
+            background: var(--dark-blue);
+            color: #94a3b8;
+            padding: 30px;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 60px;
+            border-top: 3px solid var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ВЕРХНЕЕ ОФИЦИАЛЬНОЕ МЕНЮ -->
+    <div class="top-menu">
+        <div class="menu-left">🏛️ РОСФИНМОНИТОРИНГ</div>
+        <div class="menu-right">
+            <a href="#">Главная</a>
+            <a href="#">Структура</a>
+            <a href="#">Деятельность</a>
+            <a href="#" style="color: var(--accent-gold);">Внутренний контур</a>
+        </div>
+    </div>
+
+    <!-- ГЛАВНЫЙ БАННЕР -->
+    <div class="hero-section">
+        <div class="hero-badge">Информационная система ведомства</div>
+        <h1>Федеральная служба по финансовому мониторингу</h1>
+        <p style="color: #cbd5e1; font-size: 14px;">Официальный внутренний портал для координации и мониторинга служащих</p>
+    </div>
+
+    <!-- ОСНОВНАЯ ОБЛАСТЬ ПОРТАЛА -->
+    <div class="main-container">
+
+        <!-- СЕТКА: НОВОСТИ И ПОКАЗАТЕЛИ ОРГАНИЗАЦИИ -->
+        <div class="portal-info-grid">
+            
+            <!-- Блок новостей -->
+            <div class="info-card">
+                <h2>📰 Лента ведомственных новостей</h2>
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-date">30 мая 2026</div>
+                        <div class="news-title">Запуск централизованного модуля ИИ для анализа трансграничных транзакций в рамках ПОД/ФТ.</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">28 мая 2026</div>
+                        <div class="news-title">Молодёжный совет ведомства утвердил план межрегиональных обучающих форумов на второй квартал.</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">25 мая 2026</div>
+                        <div class="news-title">Проведение плановой аттестации сотрудников ИТ-инфраструктуры центрального аппарата.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Блок ключевых метрик (Превью достижений) -->
+            <div class="info-card">
+                <h2>📊 Показатели эффективности</h2>
+                <div class="metrics-list">
+                    <div class="metric-box">
+                        <div class="metric-num">84%</div>
+                        <div class="metric-txt">Индекс клиентоцентричности ведомства</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-num">98.6%</div>
+                        <div class="metric-txt">Обращений отработано строго регламентировано</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- КАРТОЧКИ-ПРЕВЬЮ НАПРАВЛЕНИЙ ДЕЯТЕЛЬНОСТИ -->
+        <div class="preview-grid">
+            <div class="preview-card">
+                <div class="preview-icon">🛡️</div>
+                <h3>Безопасность контура</h3>
+                <p>Контроль учетных записей и верификация служебных удостоверений в режиме реального времени.</p>
+            </div>
+            <div class="preview-card">
+                <div class="preview-icon">📈</div>
+                <h3>Молодёжный совет</h3>
+                <p>Развитие кадрового потенциала, вовлечение молодых специалистов в ключевые проекты службы.</p>
+            </div>
+            <div class="preview-card">
+                <div class="preview-icon">🧑‍кат</div>
+                <h3>Профессиональная оценка</h3>
+                <p>Мониторинг личных заслуг, навыков, рейтингов и проектной деятельности госслужащих.</p>
+            </div>
+        </div>
+
+        <!-- 🔔 РАЗДЕЛ ПРОВЕРКИ СОТРУДНИКА (ТЕПЕРЬ СТРОГО В КОНЦЕ СТРАНИЦЫ) -->
+        <div class="verification-section">
+            <div class="verify-header">
+                <h2>Реестр верификации удостоверений служащих</h2>
+                <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">Для просмотра интерактивного личного портфолио специалиста введите номер служебного удостоверения</p>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="certInput" placeholder="Введите номер удостоверения (например: ФС-999888)" onkeydown="if(event.key === 'Enter') checkCertificate()">
+                <button class="btn-verify" onclick="checkCertificate()">Проверить</button>
+            </div>
+
+            <!-- Сообщение если номер не подошел -->
+            <div class="error-msg" id="verifyError">Удостоверение с данным номером не найдено в реестре информационной безопасности контура.</div>
+
+            <!-- СЮДА ИЗ БАЗЫ БУДЕТ ПОДГРУЖАТЬСЯ ТВОРЧЕСКИЙ ПЕРВЫЙ САЙТ -->
+            <div class="portfolio-display-container" id="portfolioSection">
+                <div class="portfolio-layout">
+                    
+                    <!-- Лево: 3D-Карточка из твоего личного сайта -->
+                    <div class="card-container">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="" id="userPhoto" alt="Фото служащего">
+                                <h3 id="userName">ФИО</h3>
+                                <div class="rank" id="userPost">Должность</div>
+                            </div>
+                            <div class="card-back">
+                                <h4 style="color: var(--neon-blue); margin-bottom: 10px;">Статус верификации</h4>
+                                <p>🟢 Доступ разрешен</p>
+                                <p id="userCertMeta" style="font-size: 11px;">Удостоверение: </p>
+                                <p style="font-size: 11px; margin-top: 15px; color:#64748b;">(Наведите мышку, чтобы перевернуть обратно)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Право: Контент, Навыки, Описание из первого сайта -->
+                    <div class="portfolio-details">
+                        <h2 id="userTitleName">Имя Сотрудника</h2>
+                        <div class="portfolio-bio" id="userBio">
+                            Биография...
+                        </div>
+
+                        <!-- Прогресс-бары профессиональных навыков -->
+                        <div class="skills-section">
+                            <h4>Профессиональные компетенции (Hard Skills):</h4>
+                            
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info"><span>Анализ финансовых рисков и ПОД/ФТ</span><span id="s1-val">0%</span></div>
+                                <div class="bar-bg"><div class="bar-fill" id="s1-bar"></div></div>
+                            </div>
+
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info"><span>Координация и Управление (Молодёжный совет)</span><span id="s2-val">0%</span></div>
+                                <div class="bar-bg"><div class="bar-fill" id="s2-bar"></div></div>
+                            </div>
+
+                            <div class="skill-bar-wrapper">
+                                <div class="skill-info"><span>Клиентоцентричность и Социальная инженерия</span><span id="s3-val">0%</span></div>
+                                <div class="bar-bg"><div class="bar-fill" id="s3-bar"></div></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>© 2026 Федеральная служба по финансовому мониторингу. Все права защищены.</p>
+        <p style="color: #64748b; margin-top: 5px; font-size: 11px;">Внутренний контур проверки легитимности служебных документов.</p>
+    </footer>
+
+    <!-- БАЗА ДАННЫХ И СЛИЯНИЕ ЛОГИКИ -->
+    <script>
+        // Секретная база данных контура
+        const secureRegistry = {
+            "ФС-999888": {
+                name: "Минин Максим Викторович",
+                post: "Председатель Молодёжного совета",
+                photo: "avatar.jpg", // Твой файл фото из папки проекта
+                bio: "Окончил Международный сетевой институт в сфере ПОД/ФТ. Высококлассный специалист в области экспертной оценки финансовых угроз и создания защитных механизмов от социальной инженерии. Ведет активную оперативную и организационную деятельность. Успешно координирует проекты молодых аналитиков центрального аппарата, отвечая за масштабирование внутренних инициатив ведомства.",
+                skills: {
+                    riskAnalysis: 95,
+                    management: 90,
+                    clientCentric: 88
+                }
+            }
+        };
+
+        function checkCertificate() {
+            const input = document.getElementById("certInput").value.trim();
+            const errorBlock = document.getElementById("verifyError");
+            const portfolioBlock = document.getElementById("portfolioSection");
+
+            if (secureRegistry.hasOwnProperty(input)) {
+                const empData = secureRegistry[input];
+
+                // Заполняем данные из базы в блоки твоего первого дизайна
+                document.getElementById("userName").innerText = empData.name;
+                document.getElementById("userTitleName").innerText = empData.name;
+                document.getElementById("userPost").innerText = empData.post;
+                document.getElementById("userPhoto").src = empData.photo;
+                document.getElementById("userCertMeta").innerText = "Реестр: " + input;
+                document.getElementById("userBio").innerText = empData.bio;
+
+                // Отображаем блок портфолио и скрываем ошибку
+                portfolioBlock.style.display = "block";
+                errorBlock.style.display = "none";
+
+                // Запускаем красивую анимацию заполнения прогресс-баров, как в твоем первом коде
+                setTimeout(() => {
+                    document.getElementById("s1-bar").style.width = empData.skills.riskAnalysis + "%";
+                    document.getElementById("s1-val").innerText = empData.skills.riskAnalysis + "%";
+
+                    document.getElementById("s2-bar").style.width = empData.skills.management + "%";
+                    document.getElementById("s2-val").innerText = empData.skills.management + "%";
+
+                    document.getElementById("s3-bar").style.width = empData.skills.clientCentric + "%";
+                    document.getElementById("s3-val").innerText = empData.skills.clientCentric + "%";
+                }, 100);
+
+            } else {
+                // Если номер неверный — прячем всё назад и бьем тревогу
+                portfolioBlock.style.display = "none";
+                errorBlock.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
