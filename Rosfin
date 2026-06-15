@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная — Росфинмониторинг</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f0f4f7; 
+            color: #333; 
+        }
+        
+        /* ХЕΔЕР САЙТА */
+        .navbar-custom { 
+            background-color: #0a1f33; 
+            height: 85px; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 30px; 
+            color: #fff; 
+            border-bottom: 4px solid #c5a059; 
+            justify-content: space-between; 
+        }
+        .logo-area { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .emblem-img { 
+            height: 60px; 
+            width: auto; 
+        }
+        .logo-text h1 { 
+            margin: 0; 
+            font-size: 18px; 
+            font-weight: bold; 
+            letter-spacing: 0.5px; 
+        }
+        .logo-text p { 
+            margin: 0; 
+            font-size: 10px; 
+            color: #a0b2c6; 
+            text-transform: uppercase; 
+        }
+
+        /* ИСПРАВЛЕННЫЙ БАННЕР (Теперь со сплошным солидным фоном) */
+        /* ВОЗВРАЩАЕМ ОРИГИНАЛЬНЫЙ ВИД БАННЕРА */
+.hero-banner {
+    background-color: #0a1f33; /* Базовый цвет подложки, как у шапки */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.hero-banner img {
+    width: 100%;
+    max-width: 1920px; /* Чтобы баннер не размывался на огромных мониторах */
+    height: auto;
+    display: block;
+}
+        }
+        .hero-banner h2 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* ГЛАВНЫЙ КОНТЕЙНЕР */
+        .main-content-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* ВЕРХНЯЯ СЕКЦИЯ: НОВОСТИ + ПРОВЕРКА */
+        .top-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        /* Блок новостей */
+
+/* СТИЛИ ДЛЯ ПРОДВИНУТЫХ НОВОСТЕЙ */
+.news-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.news-card-item {
+    display: grid;
+    grid-template-columns: 140px 1fr; /* 140px под фотку, остальное под текст */
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #edf1f4;
+    align-items: start;
+    text-decoration: none; /* Убираем подчеркивание со ссылки */
+    color: inherit;
+    transition: background-color 0.2s;
+}
+.news-card-item:hover {
+    background-color: #f8f9fa; /* Подсветка при наведении */
+}
+.news-card-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.news-img-box {
+    width: 140px;
+    height: 95px;
+    background-color: #e5eef5;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #dce3e8;
+}
+.news-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.news-content-box h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.4;
+}
+.news-content-box h4:hover {
+    color: #005695; /* Заголовок синеет при наведении */
+}
+.news-content-box span {
+    font-size: 11px;
+    color: #8fa2b5;
+    display: block;
+}
+        .news-box {
+            background: white;
+            border: 1px solid #dce3e8;
+            border-radius: 4px;
+            padding: 25px;
+        }
+        .section-title {
+            font-size: 20px;
+            color: #005695;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-left: 4px solid #005695;
+            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #edf1f4;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .news-item h4 {
+            margin: 0 0 5px 0;
+            font-size: 15px;
+            color: #222;
+        }
+        .news-item span {
+            font-size: 11px;
+            color: #8fa2b5;
+        }
+
+        /* Форма проверки сотрудника */
+        .verification-box {
+            background: white;
+            border: 1px solid #dce3e8;
+            border-radius: 4px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .verification-box p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .input-style {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .btn-verify {
+            width: 100%;
+            background-color: #005695;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+        }
+        .btn-verify:hover {
+            background-color: #0a1f33;
+        }
+
+        /* ИНТЕРНЕТ-ПРИЕМНАЯ */
+        /* ... твои предыдущие стили ... */
+
+        /* ИНТЕРНЕТ-ПРИЕМНАЯ */
+        .internet-priemnaya-banner {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .internet-priemnaya-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #dce3e8;
+        }
+
+        /* СЕТКА ИЗ КАРТОЧЕК */
+        .cards-grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .service-card {
+            background: white;
+            border: 1px solid #dce3e8;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        }
+        .service-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .card-title {
+            padding: 18px 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            color: #005695;
+            letter-spacing: 0.5px;
+            background: #fdfdfd;
+            border-top: 1px solid #f0f4f7;
+        }
+
+        /* МЕЖДУНАРОДНОЕ СОТРУДНИЧЕСТВО */
+        .cooperation-box {
+            background: white;
+            border: 1px solid #dce3e8;
+            border-radius: 4px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin: 25px 0;
+        }
+        .coop-logo {
+            height: 200px; /* Оставил увеличенный размер логотипов */
+            width: auto;
+            object-fit: contain;
+        }
+        .coop-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* СТРОГИЙ ПОДВАЛ */
+        .footer-profile { 
+            background-color: #0a1f33; 
+            color: #fff; 
+            padding: 30px 0; 
+            font-size: 12px; 
+            border-top: 4px solid #c5a059; 
+        }
+        .footer-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            box-sizing: border-box; 
+        }
+        .footer-emblem { 
+            height: 80px; 
+            width: auto; 
+        }
+        .footer-copyright { 
+            color: #8fa2b5; 
+            font-size: 15px; 
+            font-weight: bold; 
+            text-align: right; 
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-custom">
+        <div class="logo-area">
+            <img src="emblem.png" class="emblem-img" alt="Герб">
+            <div class="logo-text">
+                <h1>РОСФИНМОНИТОРИНГ</h1>
+                <p>Федеральная служба по финансовому мониторингу</p>
+            </div>
+        </div>
+        <div style="font-size: 12px; font-weight: bold; color: #a0b2c6;">ОФИЦИАЛЬНЫЙ ПОРТАЛ</div>
+    </nav>
+
+    <div class="hero-banner">
+    <img src="25_years_logo.png" alt="25 лет Росфинмониторинг">
+</div>
+
+    <div class="main-content-container">
+
+        <div class="top-grid">
+            
+            <div class="news-box">
+    <div class="section-title">Новости ведомства</div>
+    <div class="news-card-wrapper">
+        
+        <a href="news_page1.html" class="news-card-item">
+            <div class="news-img-box">
+                <img src="sbp.png" alt="Превью"> </div>
+            <div class="news-content-box">
+                <h4>В Санкт-Петербурге пресечена деятельность группы теневых банкиров с оборотом свыше полумиллиарда рублей</h4>
+                <span>11.06.2026</span>
+            </div>
+        </a>
+        <a href="ЗДЕСЬ_ССЫЛКА_НА_ПОЛНУЮ_СТАТЬЮ.html" class="news-card-item">
+            <div class="news-img-box">
+                <img src="den_raschku.png" alt="Превью"> 
+            </div>
+            <div class="news-content-box">
+                <h4>🇷🇺 Поздравление директора Росфинмониторинга Юрия Чиханчина с Днём России</h4>
+                <span>12.06.2026</span>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+            <div class="verification-box">
+                <div class="section-title">Проверка сотрудника</div>
+                <p>Введите номер служебного удостоверения для мгновенной верификации личности.</p>
+                <input type="text" id="id-input" class="input-style" placeholder="Например: ФС-123456">
+                <button onclick="checkEmployee()" class="btn-verify">Проверить</button>
+            </div>
+
+        </div>
+
+        <div class="internet-priemnaya-banner">
+            <a href="#">
+                <img src="internet_priemnaya.png" alt="Интернет-приемная">
+            </a>
+        </div>
+
+        <div class="cards-grid-container">
+            <div class="service-card">
+                <img src="card1.png" alt="СМИ о нас">
+                <div class="card-title">СМИ О НАС</div>
+            </div>
+            <div class="service-card">
+                <img src="card2.png" alt="Международный форум">
+                <div class="card-title">МЕЖДУНАРОДНЫЙ ФОРУМ</div>
+            </div>
+            <div class="service-card">
+                <img src="card3.png" alt="Олимпиада">
+                <div class="card-title">ОЛИМПИАДА</div>
+            </div>
+            <div class="service-card">
+                <img src="card4.png" alt="Журнал">
+                <div class="card-title">ЖУРНАЛ «ФИНАНСОВАЯ БЕЗОПАСНОСТЬ»</div>
+            </div>
+            <div class="service-card">
+                <img src="card5.png" alt="Госуслуги">
+                <div class="card-title">ФЕДЕРАЛЬНЫЙ ПРОЕКТ «ГОСУДАРСТВО ДЛЯ ЛЮДЕЙ»</div>
+            </div>
+            <div class="service-card">
+                <img src="card6.png" alt="Помним, гордимся">
+                <div class="card-title">ПОМНИМ, ГОРДИМСЯ</div>
+            </div>
+        </div>
+
+        <div class="cooperation-box">
+            <div class="section-title" style="border: none; padding: 0; text-align: center;">Международное сотрудничество</div>
+            <div class="logos-row">
+                <img src="fatf_logo.png" class="coop-logo" alt="FATF">
+                <img src="egmont_logo.png" class="coop-logo" alt="Egmont Group">
+                <img src="eag_logo.png" class="coop-logo" alt="EAG">
+            </div>
+            <p class="coop-text">
+                Росфинмониторинг осуществляет взаимодействие и ведет информационный обмен с компетентными органами ряда государств и международных организаций. Первоочередное внимание при этом уделяется обеспечению участия Российской Федерации в мероприятиях, направленных на разработку и совершенствование международных стандартов противодействия отмыванию денежных средств и финансированию терроризма...
+            </p>
+        </div>
+
+    </div>
+
+    <footer style="background-color: #0a1f33; color: #fff; padding: 30px; border-top: 4px solid #c5a059;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px;">
+        
+        <!-- ЛЕВАЯ СТОРОНА: ГЕРБ И НАЗВАНИЕ -->
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="emblem.png" alt="Герб" style="height: 50px; width: auto;">
+            <div style="text-align: left;">
+                <div style="font-size: 14px; font-weight: bold; letter-spacing: 0.5px;">РОСФИНМОНИТОРИНГ</div>
+                <div style="font-size: 9px; color: #8fa2b5; text-transform: uppercase;">Федеральная служба по финансовому мониторингу</div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ СТОРОНА: ВАЖНЫЙ ДИСКЛЕЙМЕР И КОПИРАЙТ -->
+        <div style="max-width: 600px; text-align: right;">
+            <p style="margin: 0 0 10px 0; font-size: 11px; line-height: 1.4; color: #a0b2c6; font-style: italic;">
+                Ряд материалов и деталей профессиональной деятельности сотрудников ведомства не подлежит разглашению ввиду соблюдения регламентов строгой конфиденциальности и защиты данных субъектов финансового мониторинга.
+            </p>
+            <div style="font-size: 11px; color: #8fa2b5;">
+                © 2001-2026 Официальный портал ведомства. Все права защищены.
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+    <script>
+        function checkEmployee() {
+    // Берем то, что ввел пользователь, убираем пробелы и переводим в верхний регистр
+    var val = document.getElementById('id-input').value.trim().toUpperCase();
+    
+    switch(val) {
+        // ТВОЙ ПРОФИЛЬ (Уже работает)
+        case 'ФС-125066':
+            window.location.href = 'Charlz.html';
+            break;
+            
+        // ШАБЛОН ДЛЯ НОВОГО СОТРУДНИКА №1
+        case 'ФС-777222': // <--- Сюда пишешь ID нового сотрудника
+            window.location.href = 'employee_2.html'; // <--- Сюда имя его HTML файла
+            break;
+            
+        // ШАБЛОН ДЛЯ НОВОГО СОТРУДНИКА №2
+        case 'ФС-555333': 
+            window.location.href = 'employee_3.html'; 
+            break;
+
+        // Если ничего не подошло:
+        case '':
+            alert('Пожалуйста, введите номер удостоверения.');
+            break;
+        default:
+            alert('Сотрудник с таким удостоверением не числится в ведомстве. Будьте бдительны!');
+            break;
+    }
+}
+function checkEmployee() {
+    var val = document.getElementById('id-input').value.trim().toUpperCase();
+    
+    switch(val) {
+        // ТВОЙ ПРОФИЛЬ
+        case 'ФС-125066':
+            window.location.href = 'Charlz.html';
+            break;
+            
+        // ПРОФИЛЬ ВИКТОРИИ
+        case 'ФС-270038': 
+            window.location.href = 'Leonova.html'; /* Имя файла, который мы создали выше */
+            break;
+
+        // Если ничего не подошло:
+        case '':
+            alert('Пожалуйста, введите номер удостоверения.');
+            break;
+        default:
+            alert('Сотрудник с таким удостоверением не числится в ведомстве. Будьте бдительны!');
+            break;
+    }
+}
+    </script>
+
+</body>
+</html>
